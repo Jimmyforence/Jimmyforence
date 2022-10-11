@@ -1,4 +1,4 @@
-const { post } = require("request");
+// const { post } = require("request");
 
 document.querySelector(".burguer").addEventListener("click", aBurguer);
 
@@ -66,7 +66,7 @@ document.querySelector(".btn").addEventListener("click", addCart1, true);
 if (PAIndex === -1){
 let playeraA = document.createElement("carro");
 playeraA.innerHTML = `<div class="cartAside" >
-<img class= "pAI"src="/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-right-front-62de360d06753.png" alt="Chica">
+<img class= "pAI"src="/Jimmyforence/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-right-front-62de360d06753.png" alt="Chica">
 <p>Chica</p>
 <textarea class="qtyA" name="" id="qty" cols="10" rows="1"> 1 </textarea>
 <button class= "c+A"> + </button> <button class= "c-A"> - </button>
@@ -91,7 +91,7 @@ function addCart2()
 if (PBIndex === -1){
 let playeraB = document.createElement("carro");
 playeraB.innerHTML = `<div class="cartAside" >
-<img class= "pBI"src="/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-left-front-62de360d06848.png" alt="Chica">
+<img class= "pBI"src="/Jimmyforence/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-left-front-62de360d06848.png" alt="Chica">
 <p>Chica</p>
 <textarea class="qtyB" name="" id="qty" cols="10" rows="1"> 1 </textarea>
 <button class= "c+C"> + </button> <button class= "c-C"> - </button>
@@ -116,7 +116,7 @@ else{
 if (PCIndex === -1){
 let playeraC = document.createElement("carro");
 playeraC.innerHTML = `<div class="cartAside" >
-<img class= "pCI"src="/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-front-2-62de360d06961.png" alt="Chica">
+<img class= "pCI"src="/Jimmyforence/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-front-2-62de360d06961.png" alt="Chica">
 <p>Chica</p>
 <textarea class="qtyC" name="" id="qty" cols="10" rows="1"> 1 </textarea>
 <button class= "c+C"> + </button> <button class= "c-C"> - </button>
@@ -189,7 +189,7 @@ function CarroErase(){
 
 
 
-document.querySelector(".sMail").addEventListener("click",SendMail,true)
+// document.querySelector(".sMail").addEventListener("click",SendMail,true)
 
 function SendMail()
 {
