@@ -40,23 +40,11 @@ let PAIndex = carrito.indexOf('playera1.qty')
 let PBIndex = carrito.indexOf('playera2.qty')     
 let PCIndex = carrito.indexOf('playera3.qty')   
 let total = 0
-// let contador=1
-// let contador2=1
 
  
 //Funciones 
 
-  // Erase
-document.querySelector(".erase").addEventListener("click",elimina, true);
-
-
-
-function elimina(){
-    let goma =0
-    contador = goma
-    contador2 = goma
-    console.log(`${contador}  Producto(s)  agregado al carrito}`)
-}
+  
 //Playera A
 document.querySelector(".btn").addEventListener("click", addCart1, true);
 
@@ -172,9 +160,14 @@ function CarroErase(){
         confirmButtonText: 'Ok'
       })}
       else{
+        let contEra =carrito.length 
+while( contEra!=0 ){
+    
+    let borro =document.querySelector(".cartAside")
+     borro.remove()
+      contEra --
+    }
 
-      let borro =document.querySelector(".cartAside")
-      borro.remove()
       PAIndex = carrito.indexOf('playera1.qty') 
       PBIndex = carrito.indexOf('playera2.qty')     
       PCIndex = carrito.indexOf('playera3.qty')   
