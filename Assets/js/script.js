@@ -82,7 +82,7 @@ playeraB.innerHTML = `<div class="cartAside" >
 <img class= "pBI"src="/Jimmyforence/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-left-front-62de360d06848.png" alt="Chica">
 <p>Chica</p>
 <textarea class="qtyB" name="" id="qty" cols="10" rows="1"> 1 </textarea>
-<button class= "c+C"> + </button> <button class= "c-C"> - </button>
+<button class= "c+B"> + </button> <button class= "c-B"> - </button>
 </div>`;
 document.querySelector(".side").appendChild(playeraB)
 playera2.qty = 1
@@ -107,7 +107,7 @@ playeraC.innerHTML = `<div class="cartAside" >
 <img class= "pCI"src="/Jimmyforence/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-front-2-62de360d06961.png" alt="Chica">
 <p>Chica</p>
 <textarea class="qtyC" name="" id="qty" cols="10" rows="1"> 1 </textarea>
-<button class= "c+C"> + </button> <button class= "c-C"> - </button>
+<button class= "CmasC"> + </button> <button class= "cminC"> - </button>
 </div>`;
 document.querySelector(".side").appendChild(playeraC)
 playera3.qty = 1
@@ -118,9 +118,43 @@ else{
     
     playera3.qty +=1;
     document.querySelector(".qtyC").value = playera3.qty
+      console.log( document.querySelector(".qtyC").value )
         }
+        
+        
+document.querySelector(".CmasC").addEventListener("click", moarc, true);
+
+function moarc()
+{
+    console.log( document.querySelector(".qtyC").value )
+     document.querySelector(".qtyC").value = ( playera3.qty +=1)  
+  
+}
+/// how to fix both?
+document.querySelector(".cminC").addEventListener("click", minusc, true);
+
+function minusc()
+{ if (playera3.qty<=1){
+    let borro =document.querySelector(".cartAside")
+    borro.remove()
+    PCIndex = carrito.indexOf('playera3.qty')
+} 
+   else{
+    playera3.qty -=1;
+    document.querySelector(".qtyC").value = playera3.qty
+    PCIndex = carrito.indexOf('playera3.qty')
+}}
+
+
 }
 
+// document.querySelector(".CmasC").addEventListener("click", moarc, true);
+
+// function moarc()
+// {
+//     playera3.qty +=1;
+//     document.querySelector(".qtyC").value = playera3.qty
+// }
 
 
  document.querySelector(".calc").addEventListener("click", getTotal, true);
