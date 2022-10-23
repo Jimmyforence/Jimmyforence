@@ -123,20 +123,22 @@ else{
 
 
 
-document.querySelector(".calc").addEventListener("click", getTotal, true);
+ document.querySelector(".calc").addEventListener("click", getTotal, true);
 
-const pagar = ( playera1.precio * playera1.qty)
-console.log (pagar)
+
+
  function getTotal() {
     if (carrito.length === 0){
-document.querySelector(".qtyC").value
-//document.querySelector(".totalT").style.display = none
+
+document.querySelector(".totalT").style.display = none
     }
     else{
+        var cQty =  document.querySelector(".qtyC").value 
+var pagar = cQty*playera3.precio
+        console.log (pagar)
     document.querySelector(".totalT").value = pagar
  }
 }
-
 
 let busqueda = document.querySelector(".lupa");
 busqueda.addEventListener("click", busca);
