@@ -59,13 +59,15 @@ playeraA.innerHTML = `<div class="cartAside" >
 <img class= "pAI"src="/Jimmyforence/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-right-front-62de360d06753.png" alt="Chica">
 <p>Chica</p>
 <textarea class="qtyA" name="" id="qty" cols="10" rows="1"> 1 </textarea>
-<button class= "c+A"> + </button> <button class= "c-A"> - </button>
+<button class= "CmasA"> + </button> <button class= "cminA"> - </button>
 </div>`;
 document.querySelector(".side").appendChild(playeraA)
 playera1.qty = 1
 carrito.push(playera1) 
 PAIndex = 1
 aQty =  document.querySelector(".qtyA").value
+document.querySelector(".cminA").addEventListener("click", minusa, true);
+document.querySelector(".CmasA").addEventListener("click", moara, true);
 getTotal()
 
 }
@@ -73,6 +75,10 @@ else{
     
     playera1.qty +=1;
     document.querySelector(".qtyA").value = playera1.qty
+    aQty =  document.querySelector(".qtyA").value 
+    document.querySelector(".cminA").addEventListener("click", minusa, true);
+    document.querySelector(".CmasA").addEventListener("click", moara, true);
+    getTotal()
         }
 }
 
@@ -89,13 +95,15 @@ playeraB.innerHTML = `<div class="cartAside" >
 <img class= "pBI"src="/Jimmyforence/Assets/Store assets/Papás/mens-premium-heavyweight-tee-black-left-front-62de360d06848.png" alt="Chica">
 <p>Chica</p>
 <textarea class="qtyB" name="" id="qty" cols="10" rows="1"> 1 </textarea>
-<button class= "c+B"> + </button> <button class= "c-B"> - </button>
+<button class= "cmasB"> + </button> <button class= "cminB"> - </button>
 </div>`;
 document.querySelector(".side").appendChild(playeraB)
 playera2.qty = 1
 carrito.push(playera2) 
 PBIndex = 1
 bQty =  document.querySelector(".qtyB").value
+document.querySelector(".cminB").addEventListener("click", minusb, true);
+document.querySelector(".cmasB").addEventListener("click", moarb, true);
 getTotal()
 
 }
@@ -103,6 +111,9 @@ else{
    
    playera2.qty +=1;
    document.querySelector(".qtyB").value = playera2.qty
+   bQty =  document.querySelector(".qtyB").value 
+   document.querySelector(".cminB").addEventListener("click", minusb, true);
+   document.querySelector(".cmasB").addEventListener("click", moarb, true);
    getTotal()
 
        }
@@ -126,72 +137,113 @@ playera3.qty = 1
 carrito.push(playera3) 
 PCIndex = 1
 cQty =  document.querySelector(".qtyC").value 
+document.querySelector(".cminC").addEventListener("click", minusc, true);
+document.querySelector(".CmasC").addEventListener("click", moarc, true);
 getTotal()
 }
 else{
     
     playera3.qty +=1;
     document.querySelector(".qtyC").value = playera3.qty
+    cQty =  document.querySelector(".qtyC").value 
+    document.querySelector(".cminC").addEventListener("click", minusc, true);
+    document.querySelector(".CmasC").addEventListener("click", moarc, true);
     getTotal()
         }
 }
 
-// Menos y Más
-const cMT= setTimeout(()=>{
-document.querySelector(".CmasC").addEventListener("click", moarc, true);
-},5000)
-
-
 function moarc()
 {
-    
-
-     document.querySelector(".qtyC").value = ( playera3.qty +=1)  
-     getTotal()
-
+        document.querySelector(".qtyC").value = ( playera3.qty +=1)  
+        cQty =  document.querySelector(".qtyC").value 
+        getTotal()
 }
-
-document.querySelector(".calc").addEventListener("click", offtimeout, true);
-
-function offtimeout(){
-clearTimeout(cMT)
-}
-
-
-setTimeout(()=>{
-    document.querySelector(".cminC").addEventListener("click", minusc, true);
-
 function minusc()
 { if (playera3.qty<=1){
     let borro =document.querySelector(".cartAside")
     borro.remove()
     PCIndex = carrito.indexOf('playera3.qty')
+    cQty =  0
     getTotal()
+    console.log(carrito.length)
 } 
    else{
     playera3.qty -=1;
     document.querySelector(".qtyC").value = playera3.qty
     PCIndex = carrito.indexOf('playera3.qty')
+    cQty =  document.querySelector(".qtyC").value 
     getTotal()
 
 }}
 
-},5000)
+function moarb()
+{
+        document.querySelector(".qtyB").value = ( playera2.qty +=1)  
+        bQty =  document.querySelector(".qtyB").value 
+     getTotal()
+
+}
+
+function minusb()
+{ if (playera2.qty<=1){
+    let borro =document.querySelector(".cartAside")
+    borro.remove()
+    PBIndex = carrito.indexOf('playera2.qty')
+    bQty =  0
+    getTotal()
+    
+} 
+   else{
+    playera2.qty -=1;
+    document.querySelector(".qtyB").value = playera2.qty
+    PBIndex = carrito.indexOf('playera2.qty')
+    bQty =  document.querySelector(".qtyB").value 
+    getTotal()
+
+}}
+
+function moara()
+{
+        document.querySelector(".qtyA").value = ( playera1.qty +=1)  
+        aQty =  document.querySelector(".qtyA").value 
+     getTotal()
+
+}
+
+function minusa()
+{ if (playera1.qty<=1){
+    let borro =document.querySelector(".cartAside")
+    borro.remove()
+    ABIndex = carrito.indexOf('playera1.qty')
+    aQty =  0
+    getTotal()
+} 
+   else{
+    playera1.qty -=1;
+    document.querySelector(".qtyA").value = playera2.qty
+    ABIndex = carrito.indexOf('playera1.qty')
+    aQty =  document.querySelector(".qtyA").value 
+    getTotal()
+
+}}
+
+
 
 
 
  function getTotal() {
     if (carrito.length === 0){
         document.querySelector(".totalT").value = "$0"
-// document.querySelector(".totalT").style.display = "none"
+
     }
     else{
     
 var pagar = (cQty*playera3.precio)+(bQty*playera2.precio)+(aQty*playera1.precio)
-
 document.querySelector(".totalT").value = pagar
  }
 }
+
+
 
 
 
@@ -220,6 +272,7 @@ function CarroErase(){
       })}
       else{
         let contEra =carrito.length 
+        console.log(carrito.length)
 while( contEra!=0 ){
     
     let borro =document.querySelector(".cartAside")
@@ -229,8 +282,13 @@ while( contEra!=0 ){
 
       PAIndex = carrito.indexOf('playera1.qty') 
       PBIndex = carrito.indexOf('playera2.qty')     
-      PCIndex = carrito.indexOf('playera3.qty')   
+      PCIndex = carrito.indexOf('playera3.qty')  
+      aQty = 0
+      bQty = 0
+      cQty = 0 
+      console.log(carrito.length)
       carrito.length=0
+      
       Swal.fire({
         title: 'Compras Borradas',
         text: 'Los haz eliminado a todos',
