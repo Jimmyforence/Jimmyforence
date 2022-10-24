@@ -10,3 +10,12 @@ run css always:
 npm run watch-css
 
 _________________________________________________________
+Promise sintax
+// new Promise ((solve, reject) =>{
+// if (document.querySelector(".qtyC").value = "null")
+// {
+//     solve ()
+// }
+// else{
+// reject ()
+// }})

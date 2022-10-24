@@ -40,7 +40,9 @@ let PAIndex = carrito.indexOf('playera1.qty')
 let PBIndex = carrito.indexOf('playera2.qty')     
 let PCIndex = carrito.indexOf('playera3.qty')   
 let total = 0
-
+let aQty = 0
+let bQty = 0
+let cQty = 0
  
 //Funciones 
 
@@ -63,6 +65,9 @@ document.querySelector(".side").appendChild(playeraA)
 playera1.qty = 1
 carrito.push(playera1) 
 PAIndex = 1
+aQty =  document.querySelector(".qtyA").value
+getTotal()
+
 }
 else{
     
@@ -70,6 +75,8 @@ else{
     document.querySelector(".qtyA").value = playera1.qty
         }
 }
+
+
 //Playera B
 document.querySelector(".btnB").addEventListener("click", addCart2, true);
 
@@ -88,11 +95,16 @@ document.querySelector(".side").appendChild(playeraB)
 playera2.qty = 1
 carrito.push(playera2) 
 PBIndex = 1
+bQty =  document.querySelector(".qtyB").value
+getTotal()
+
 }
 else{
    
    playera2.qty +=1;
    document.querySelector(".qtyB").value = playera2.qty
+   getTotal()
+
        }
 }
 //Playera C
@@ -113,66 +125,77 @@ document.querySelector(".side").appendChild(playeraC)
 playera3.qty = 1
 carrito.push(playera3) 
 PCIndex = 1
+cQty =  document.querySelector(".qtyC").value 
+getTotal()
 }
 else{
     
     playera3.qty +=1;
     document.querySelector(".qtyC").value = playera3.qty
-      console.log( document.querySelector(".qtyC").value )
+    getTotal()
         }
-        
-        
+}
+
+// Menos y Más
+const cMT= setTimeout(()=>{
 document.querySelector(".CmasC").addEventListener("click", moarc, true);
+},5000)
+
 
 function moarc()
 {
-    console.log( document.querySelector(".qtyC").value )
+    
+
      document.querySelector(".qtyC").value = ( playera3.qty +=1)  
-  
+     getTotal()
+
 }
-/// how to fix both?
-document.querySelector(".cminC").addEventListener("click", minusc, true);
+
+document.querySelector(".calc").addEventListener("click", offtimeout, true);
+
+function offtimeout(){
+clearTimeout(cMT)
+}
+
+
+setTimeout(()=>{
+    document.querySelector(".cminC").addEventListener("click", minusc, true);
 
 function minusc()
 { if (playera3.qty<=1){
     let borro =document.querySelector(".cartAside")
     borro.remove()
     PCIndex = carrito.indexOf('playera3.qty')
+    getTotal()
 } 
    else{
     playera3.qty -=1;
     document.querySelector(".qtyC").value = playera3.qty
     PCIndex = carrito.indexOf('playera3.qty')
+    getTotal()
+
 }}
 
-
-}
-
-// document.querySelector(".CmasC").addEventListener("click", moarc, true);
-
-// function moarc()
-// {
-//     playera3.qty +=1;
-//     document.querySelector(".qtyC").value = playera3.qty
-// }
-
-
- document.querySelector(".calc").addEventListener("click", getTotal, true);
+},5000)
 
 
 
  function getTotal() {
     if (carrito.length === 0){
-
-document.querySelector(".totalT").style.display = none
+        document.querySelector(".totalT").value = "$0"
+// document.querySelector(".totalT").style.display = "none"
     }
     else{
-        var cQty =  document.querySelector(".qtyC").value 
-var pagar = cQty*playera3.precio
-        console.log (pagar)
-    document.querySelector(".totalT").value = pagar
+    
+var pagar = (cQty*playera3.precio)+(bQty*playera2.precio)+(aQty*playera1.precio)
+
+document.querySelector(".totalT").value = pagar
  }
 }
+
+
+
+//Search
 
 let busqueda = document.querySelector(".lupa");
 busqueda.addEventListener("click", busca);
@@ -183,7 +206,7 @@ function busca ()
     let searchresult =  prodDisp.filter ((producto) => producto.precio >= monto)
 
 }
-
+getTotal()
 // Erase
 document.querySelector(".erase").addEventListener("click",CarroErase, true)
 
@@ -213,7 +236,8 @@ while( contEra!=0 ){
         text: 'Los haz eliminado a todos',
         icon: 'error',
         confirmButtonText: 'Muy mal'
-      })}
+        
+      })}getTotal()
       }
 
 
